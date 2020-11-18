@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "GooseFactory",
+"language": "GDScript",
+"path": "res://GooseFactory.gd"
+}, {
+"base": "Node",
+"class": "GooseSpawner",
+"language": "GDScript",
+"path": "res://GooseSpawner.gd"
+}, {
+"base": "Node",
+"class": "easyGoose",
+"language": "GDScript",
+"path": "res://easyGoose.gd"
+}, {
+"base": "Node",
+"class": "hardGoose",
+"language": "GDScript",
+"path": "res://hardGoose.gd"
+}, {
+"base": "Node",
+"class": "intermediateGoose",
+"language": "GDScript",
+"path": "res://intermediateGoose.gd"
+} ]
+_global_script_class_icons={
+"GooseFactory": "",
+"GooseSpawner": "",
+"easyGoose": "",
+"hardGoose": "",
+"intermediateGoose": ""
+}
+
+[application]
+
+config/name="Oo"
+run/main_scene="res://entity.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
