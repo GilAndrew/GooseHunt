@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/goose_PNG6.png" type="Texture" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+
+[node name="entity" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="goose_PNG6" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 10.4062, 2.8219 )
+scale = Vector2( 0.139377, 0.139377 )
+texture = ExtResource( 1 )
