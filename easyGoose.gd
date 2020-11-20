@@ -1,11 +1,11 @@
-extends Node
+extends KinematicBody2D
 
 class_name easyGoose
 
 func _ready():
-	var easyscene = load("res://entity.tscn")
-	return easyscene.instance()
-	
+	#var easyscene = load("res://entity.tscn")
+	#return easyscene.instance()
+	pass
 	
 
 	

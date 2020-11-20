@@ -4,6 +4,7 @@ class_name GooseFactory
 
 var difficulty
 
+# This returns the "type" of goose as an identifier to the spawner
 func _init():
 	difficulty = {
 		"easy": easyGoose,
@@ -16,7 +17,5 @@ func newGoose(type):
 		return difficulty.get("easy")
 	elif(type == "intermediate"):
 		return difficulty.get("intermediate")
-	elif(type == "hard"):
+	else :
 		return difficulty.get("hard")
-	
-	return

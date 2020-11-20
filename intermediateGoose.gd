@@ -4,10 +4,10 @@ extends Node
 class_name intermediateGoose
 
 func _ready():
-	var easyscene = load("res://entity.tscn")
+	#var easyscene = load("res://entity.tscn")
 	
-	return easyscene.instance()
-	
+	#return easyscene.instance()
+	pass
 	
 #These are for laterrrr
 #var move_speed = Vector2(x,x)
