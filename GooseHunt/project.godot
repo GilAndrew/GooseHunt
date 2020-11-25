@@ -1,0 +1,59 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Goose",
+"language": "GDScript",
+"path": "res://goose.gd"
+}, {
+"base": "Node",
+"class": "GooseFactory",
+"language": "GDScript",
+"path": "res://goose_factory.gd"
+}, {
+"base": "Node",
+"class": "GooseSpawner",
+"language": "GDScript",
+"path": "res://goose_spawner.gd"
+}, {
+"base": "RigidBody2D",
+"class": "easyGoose",
+"language": "GDScript",
+"path": "res://easy_goose.gd"
+}, {
+"base": "Goose",
+"class": "hardGoose",
+"language": "GDScript",
+"path": "res://hard_goose.gd"
+}, {
+"base": "Node",
+"class": "intermediateGoose",
+"language": "GDScript",
+"path": "res://intermediate_goose.gd"
+} ]
+_global_script_class_icons={
+"Goose": "",
+"GooseFactory": "",
+"GooseSpawner": "",
+"easyGoose": "",
+"hardGoose": "",
+"intermediateGoose": ""
+}
+
+[application]
+
+config/name="Goose Hunt"
+run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
