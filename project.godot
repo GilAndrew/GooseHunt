@@ -9,38 +9,32 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "RigidBody2D",
-"class": "Goose",
-"language": "GDScript",
-"path": "res://goose.gd"
-}, {
 "base": "Node",
 "class": "GooseFactory",
 "language": "GDScript",
-"path": "res://goose_factory.gd"
+"path": "res://GooseFactory.gd"
 }, {
 "base": "Node",
 "class": "GooseSpawner",
 "language": "GDScript",
-"path": "res://goose_spawner.gd"
+"path": "res://GooseSpawner.gd"
 }, {
-"base": "RigidBody2D",
+"base": "KinematicBody2D",
 "class": "easyGoose",
 "language": "GDScript",
-"path": "res://easy_goose.gd"
+"path": "res://easyGoose.gd"
 }, {
-"base": "Goose",
+"base": "Node",
 "class": "hardGoose",
 "language": "GDScript",
-"path": "res://hard_goose.gd"
+"path": "res://hardGoose.gd"
 }, {
 "base": "Node",
 "class": "intermediateGoose",
 "language": "GDScript",
-"path": "res://intermediate_goose.gd"
+"path": "res://intermediateGoose.gd"
 } ]
 _global_script_class_icons={
-"Goose": "",
 "GooseFactory": "",
 "GooseSpawner": "",
 "easyGoose": "",
