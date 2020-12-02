@@ -3,8 +3,8 @@ extends "goose.gd"
 class_name easyGoose
 
 func _ready():
-	#print("We are in easy Goose Ready")
-	pass
+	speed = 200
+
 	
 #These are for laterrrr
 #var move_speed = Vector2(x,x)

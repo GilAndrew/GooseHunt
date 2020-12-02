@@ -1,12 +1,12 @@
-extends Goose
+extends "goose.gd"
 
 class_name hardGoose
 
 func _ready():
-	#var easyscene = load("res://entity.tscn")
+	speed = 400
 	
-	#return easyscene.instance()
-	pass
+	
+	
 #These are for laterrrr
 #var move_speed = Vector2(x,x)
 #var min_move_speed = x
