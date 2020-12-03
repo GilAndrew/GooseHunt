@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Untitled.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Dirt.PNG" type="Texture" id=3]
+[ext_resource path="res://Sprites/skyandtree.PNG" type="Texture" id=4]
+[ext_resource path="res://MenuStuff/highscore.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -13,4 +16,20 @@ texture = ExtResource( 2 )
 [node name="ReticleTimer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
+
+[node name="skyandtree" type="Sprite" parent="."]
+position = Vector2( 654.938, 370.183 )
+scale = Vector2( 0.888478, 0.888478 )
+texture = ExtResource( 4 )
+
+[node name="Dirt" type="Sprite" parent="skyandtree"]
+position = Vector2( 0.471146, -0.0145445 )
+scale = Vector2( 1.00916, 1.00409 )
+texture = ExtResource( 3 )
+
+[node name="Control" parent="." instance=ExtResource( 5 )]
+margin_left = 408.0
+margin_top = 390.0
+margin_right = 1156.0
+margin_bottom = 390.0
 [connection signal="timeout" from="ReticleTimer" to="." method="_on_ReticleTimer_timeout"]

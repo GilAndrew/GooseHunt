@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/goose_PNG28.png" type="Texture" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.1136, 27.3066 )
+
+[node name="easygoose" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="goose_PNG28" type="Sprite" parent="."]
+scale = Vector2( 0.316, 0.324766 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
