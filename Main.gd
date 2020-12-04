@@ -1,21 +1,22 @@
 extends Node
 
-signal shot(shot_event)
+#signal shot(shot_event)
+
+onready var mediator = get_node("/root/Mediator")
 
 export (PackedScene) var goose = load("res://goose.tscn")
-
-#onready var mediator = get_node("/root/Mediator")
 
 var goose_counter = 2
 
 var bullets = 3
 
-func _init():
-	#connect("shot", Mediator, "_on_shot_fired")
-	pass
+#func _init():
+#	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mediator.connect("hit", self, "_on_goose_hit")
+	mediator.connect("bye", self, "_on_goose_bye")
 	new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,7 +29,6 @@ func new_game():
 
 func _input(event):
 	if event is InputEventMouseButton :
-		print(event.position)
 		if (!(event.pressed)):
 			pass
 		elif (event.button_index == BUTTON_LEFT and event.pressed and bullets > 0):
@@ -37,16 +37,15 @@ func _input(event):
 			#print("Bullets left:", bullets)
 			$Reticle.position = event.position
 			$Reticle.show()
-			emit_signal("shot", event)
-			#mediator.on_shot_fired(event)
-			
+			#emit_signal("shot", event)
+			mediator.shot(event)	
 		else :
 			print("OUT OF AMMO")
 
-#func _on_goose_hit(_pos):
+func _on_goose_hit(_pos):
 	#print("The goose was hit, says main")
 	#print(pos)
-#	pass
+	pass
 
 func _on_ReticleTimer_timeout():
 	$Reticle.hide()
@@ -62,18 +61,18 @@ func _on_GooseTimer_timeout():
 	goose_inst.type = "easy"
 	goose_inst.dir = 0
 	add_child(goose_inst)
-	var _e = connect("shot", goose_inst, "_on_shot_fired")
-	goose_inst.connect("hit", self, "_on_goose_hit")
-	goose_inst.connect("bye", self, "_on_goose_bye")
+	#var _e = connect("shot", goose_inst, "_on_shot_fired")
+	#goose_inst.connect("hit", self, "_on_goose_hit")
+	#goose_inst.connect("bye", self, "_on_goose_bye")
 	
 	#$GooseTimer.start()
 	var goose2_inst = goose.instance()
 	goose2_inst.type = "easy"
 	goose2_inst.dir = 1
 	add_child(goose2_inst)
-	var _f = connect("shot", goose2_inst, "_on_shot_fired")
-	goose2_inst.connect("hit", self, "_on_goose_hit")
-	goose2_inst.connect("bye", self, "_on_goose_bye")
+	#var _f = connect("shot", goose2_inst, "_on_shot_fired")
+	#goose2_inst.connect("hit", self, "_on_goose_hit")
+	#goose2_inst.connect("bye", self, "_on_goose_bye")
 	
 func _on_goose_bye():
 	# there will be 10 geese per round how many rounds
