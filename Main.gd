@@ -33,8 +33,8 @@ func _input(event):
 			pass
 		elif (event.button_index == BUTTON_LEFT and event.pressed and bullets > 0):
 			bullets -= 1
-			print("YOU FIRED A SHOT!")
-			prints("Bullets left:", bullets)
+			#print("YOU FIRED A SHOT!")
+			#print("Bullets left:", bullets)
 			$Reticle.position = event.position
 			$Reticle.show()
 			emit_signal("shot", event)
@@ -53,7 +53,7 @@ func _on_ReticleTimer_timeout():
 
 func _on_GooseTimer_timeout():
 	# on timeout, spawn a goose!
-	print("SPAWN!!!")
+
 	bullets = 3
 	goose_counter = 2
 	
