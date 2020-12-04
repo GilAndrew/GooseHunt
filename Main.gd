@@ -2,7 +2,17 @@ extends Node
 
 signal shot(shot_event)
 
-var gooseFactory = load("res://goose_factory.gd").new()
+export (PackedScene) var goose = load("res://goose.tscn")
+
+#onready var mediator = get_node("/root/Mediator")
+
+var goose_counter = 2
+
+var bullets = 3
+
+func _init():
+	#connect("shot", Mediator, "_on_shot_fired")
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,49 +23,61 @@ func _process(_delta):
 	pass
 
 func new_game():
-	
-	# below is the goose instantiation and 'starting' them, will move to another funciton later
-	var goose_inst = gooseFactory.newGoose("easy")
-	#var goose_inst = goose.instance()
-	
-	add_child(goose_inst)
-	connect("shot", goose_inst, "_on_shot_fired")
-	goose_inst.connect("hit", self, "_on_goose_hit")
-	
-	# This stuff with startPos and the start call might be moved to easy_goose, etc.
-	# especially the vector 2 thing
-	var startPos = Position2D.new()
-	startPos.position.x = 200
-	startPos.position.y = 100
-	goose_inst.start(startPos.position, Vector2(rand_range(100, 250), 0))
-	# Some basic movement code, direction  and the rotation stuff will be taken into factor when we come up with movement paths
-	#var direction = (PI / 2)
-	#goose_inst.velocity = Vector2(rand_range(100, 250), 0)
-	#linear_velocity = linear_velocity.rotated(PI / 2)
+	$GooseTimer.start()
 
 
 func _input(event):
 	if event is InputEventMouseButton :
-		if (event.button_index == BUTTON_LEFT and event.pressed):
+		print(event.position)
+		if (!(event.pressed)):
+			pass
+		elif (event.button_index == BUTTON_LEFT and event.pressed and bullets > 0):
+			bullets -= 1
 			print("YOU FIRED A SHOT!")
+			prints("Bullets left:", bullets)
 			$Reticle.position = event.position
 			$Reticle.show()
-			print(event.position)
 			emit_signal("shot", event)
+			#mediator.on_shot_fired(event)
+			
+		else :
+			print("OUT OF AMMO")
 
-			#$KinematicBody2D.
-			#if (overlaps_area(event.position)) :
-			#	hide()
-			#	queue_free()
-
-
-func _on_goose_hit(pos):
-	print("The goose was hit, says main")
-	print(pos)
-	# reticule sprite appear
-	#$Reticle.position = pos
-	#$Reticle.show()
-
+#func _on_goose_hit(_pos):
+	#print("The goose was hit, says main")
+	#print(pos)
+#	pass
 
 func _on_ReticleTimer_timeout():
 	$Reticle.hide()
+
+func _on_GooseTimer_timeout():
+	# on timeout, spawn a goose!
+	print("SPAWN!!!")
+	bullets = 3
+	goose_counter = 2
+	
+	# below is the goose instantiation and 'starting' them, will move to another function later
+	var goose_inst = goose.instance()
+	goose_inst.type = "easy"
+	goose_inst.dir = 0
+	add_child(goose_inst)
+	var _e = connect("shot", goose_inst, "_on_shot_fired")
+	goose_inst.connect("hit", self, "_on_goose_hit")
+	goose_inst.connect("bye", self, "_on_goose_bye")
+	
+	#$GooseTimer.start()
+	var goose2_inst = goose.instance()
+	goose2_inst.type = "easy"
+	goose2_inst.dir = 1
+	add_child(goose2_inst)
+	var _f = connect("shot", goose2_inst, "_on_shot_fired")
+	goose2_inst.connect("hit", self, "_on_goose_hit")
+	goose2_inst.connect("bye", self, "_on_goose_bye")
+	
+func _on_goose_bye():
+	# there will be 10 geese per round how many rounds
+	goose_counter -= 1
+	if (goose_counter == 0) :
+		$GooseTimer.start()
+	
