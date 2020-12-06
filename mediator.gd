@@ -33,6 +33,8 @@ func _ready():
 func hit(pos):
 	#print("Mediator hears goose say hit")
 	emit_signal("hit", pos)
+	$"/root/Global".score += 2
+	
 
 func bye():
 	#print("Mediator hears goose say bye")

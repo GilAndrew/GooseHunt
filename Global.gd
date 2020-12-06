@@ -7,3 +7,5 @@ func instance_node(node, location, parent):
 	return node_instance
 
 var score = 0
+
+var num_rounds = 3
