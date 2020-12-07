@@ -7,8 +7,8 @@ extends Node
 var save_path = "res://save.txt"
 var file = File.new()
 	
-func saveScore():
-	var newScore = [100, 0, 0, 0, 0, 0, 0 , 0, 0, 12]
+func resetScores():
+	var newScore = [0, 0, 0, 0, 0, 0, 0 , 0, 0, 0]
 	file.open(save_path, File.WRITE)
 	file.store_var(newScore)
 	file.close()
@@ -19,9 +19,8 @@ func compareScore(newscore):
 	var i = 0
 	while i < 10:
 		if data[i] < newscore:
-			data[9] = newscore
+			data[0] = newscore
 			data.sort()
-			print(data[9])
 			replaceScores(data)
 			break
 		i += 1
@@ -30,7 +29,6 @@ func compareScore(newscore):
 func replaceScores(newScores):
 	file.open(save_path, File.WRITE)
 	file.store_var(newScores)
-	print(newScores[0])
 	file.close()
 	
 func returnScores():
@@ -43,7 +41,6 @@ func highestScore():
 	file.open(save_path, File.READ)
 	var data = file.get_var()
 	file.close()
-	#print(data[0])
 	return data[9]
 	
 	

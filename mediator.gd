@@ -14,7 +14,7 @@ extends Node
 signal bye()
 signal shot(shot_event)
 	
-func hit(pos, val):
+func hit(_pos, val):
 	$"/root/Global".score += val
 
 func bye():

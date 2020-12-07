@@ -27,14 +27,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Goose Hunt"
-run/main_scene="res://TitleScreen.tscn"
+run/main_scene="res://Screens/TitleScreen.tscn"
 config/use_custom_user_dir=true
 config/icon="res://Assets/icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
 SaveSystem="*res://SaveSystem.gd"
+Global="*res://Global.gd"
 Mediator="*res://mediator.gd"
 
 [display]
