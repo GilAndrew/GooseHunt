@@ -14,32 +14,14 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://goose.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "GooseBehavior",
 "language": "GDScript",
 "path": "res://goose_behavior.gd"
-}, {
-"base": "Area2D",
-"class": "easyGoose",
-"language": "GDScript",
-"path": "res://easy_goose.gd"
-}, {
-"base": "Area2D",
-"class": "hardGoose",
-"language": "GDScript",
-"path": "res://hard_goose.gd"
-}, {
-"base": "Area2D",
-"class": "intermediateGoose",
-"language": "GDScript",
-"path": "res://intermediate_goose.gd"
 } ]
 _global_script_class_icons={
 "Goose": "",
-"GooseBehavior": "",
-"easyGoose": "",
-"hardGoose": "",
-"intermediateGoose": ""
+"GooseBehavior": ""
 }
 
 [application]
