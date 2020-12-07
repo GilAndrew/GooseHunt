@@ -6,9 +6,9 @@
 -Team Members: Caleb Chatham, Andrew Gilfillan
 
 -Special Instructions to Run Program:
-1. Go to the appropriate Executables folder for you OS on the github
-2. Download the files in the executable folder, (e.g. "Goose Hunt.pck" and "Goose Hunt.exe" for Windows)
-3. Have both files in the same folder and run the executable "Goose Hunt.exe" file
+(Note currently it only works on Windows)
+1. Download the files "Goose Hunt.pck" and "Goose Hunt.exe"
+2. Have both files in the same folder and run the executable "Goose Hunt.exe" file
 
 -Note:
 The game itself can run from the exported game files, and all .gd scripts can be opened and easily read in a text-editor.
