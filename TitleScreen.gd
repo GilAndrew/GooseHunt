@@ -1,8 +1,8 @@
 extends Node
 
 func _ready():
-	SaveSystem.saveScore()
-	SaveSystem.compareScore(201)
+	SaveSystem.loadScores()
+	#SaveSystem.compareScore(21)
 	$"/root/Global".highscore = SaveSystem.highestScore()
 	
 	for button in $Menu/CenterRow/Buttons.get_children():

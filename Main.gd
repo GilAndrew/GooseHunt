@@ -22,8 +22,8 @@ func _ready():
 	new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(_delta):
-#	pass
+func _process(_delta):
+	pass
 
 func new_game():
 	$GooseTimer.start()
@@ -31,6 +31,8 @@ func new_game():
 func game_over():
 	print("Game over!")
 	print("Go to the post-game screen (display the high scores, then time out to title screen)")
+	SaveSystem.compareScore(Global.score)
+	get_tree().change_scene("res://HighScoresAfterGame.tscn")
 	$GooseTimer.stop()
 
 func _input(event):
@@ -49,10 +51,10 @@ func _input(event):
 		else :
 			print("OUT OF AMMO")
 
-#func _on_goose_hit(_pos):
+func _on_goose_hit(_pos):
 	#print("The goose was hit, says main")
 	#print(pos)
-#	pass
+	pass
 
 func _on_ReticleTimer_timeout():
 	$Reticle.hide()
