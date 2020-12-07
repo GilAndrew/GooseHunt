@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Untitled.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Assets/Sprites/skyandtree.PNG" type="Texture" id=4]
 [ext_resource path="res://MenuStuff/currentscore.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Capture.PNG" type="Texture" id=6]
+[ext_resource path="res://Assets/Font.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 57
+font_data = ExtResource( 7 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -20,10 +25,10 @@ wait_time = 0.2
 [node name="currentscore" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.945
 anchor_bottom = 1.118
-margin_left = 423.5
-margin_top = -308.364
-margin_right = -45.4396
-margin_bottom = 98.3164
+margin_left = 551.51
+margin_top = -308.566
+margin_right = 89.5696
+margin_bottom = 98.1136
 
 [node name="GooseTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -41,25 +46,32 @@ __meta__ = {
 [node name="Dirt" type="Sprite" parent="skyandtree"]
 position = Vector2( 0.471146, -0.0145445 )
 scale = Vector2( 1.00916, 1.00409 )
-z_index = 1
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Capture" type="Sprite" parent="."]
-position = Vector2( 696.319, 677.278 )
-scale = Vector2( 1.30604, 0.805116 )
+position = Vector2( 725.75, 677.278 )
+scale = Vector2( 1.07987, 0.805116 )
 z_index = -1
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Capture2" type="Sprite" parent="."]
 position = Vector2( 109.249, 673.714 )
 scale = Vector2( 0.588343, 0.805116 )
 z_index = -1
 texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 588.181
+margin_top = 645.437
+margin_right = 779.181
+margin_bottom = 711.437
+custom_fonts/font = SubResource( 1 )
+text = "Score = "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="ReticleTimer" to="." method="_on_ReticleTimer_timeout"]
 [connection signal="timeout" from="GooseTimer" to="." method="_on_GooseTimer_timeout"]

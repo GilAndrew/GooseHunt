@@ -2,9 +2,12 @@ extends Area2D
 
 class_name Goose
 
-# This gives us access to the instance of the Mediator Singleton and the Global singleton
+#signal hit(pos_shot)
+
+#signal bye()
+
 onready var mediator = get_node("/root/Mediator")
-onready var global = get_node("/root/Global")
+
 var gooseBehavior = load("res://goose_behavior.gd").new()
 
 var screen_size
@@ -13,19 +16,22 @@ var dir # if 0, going right, if 1 going left
 var speed
 var min_speed
 var max_speed
-var value
+
 var velocity = Vector2()
+
+#func _init():
+#	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mediator.connect("shot", self, "_on_shot_fired")
-	type = global.difficulty
 	screen_size = get_viewport_rect().size
 	position.x = rand_range(400,500)
-	position.y = 500
+	position.y = 550
 	gooseBehavior.newGoose(self, type)
 	if (dir == 1) :
 		$Sprite.set_flip_h(true)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,33 +42,44 @@ func _process(delta):
 	
 	# now we change the velocity values to get some more "fun" movement
 	if (dir == 0) :
-		velocity.x += rand_range(-10,10)
+		velocity.x += rand_range(-20,20)
 	else :
-		velocity.x += rand_range(-15,5)
+		velocity.x += rand_range(-35,5)
 	
 	velocity.y += rand_range(-30,10)
 	
-	# we set a bound at 500, so the geese don't spawn below dirt
-	position.y = clamp(position.y, -500, 500)
+	# we start at y = 400
+	# we need a bound so that y is never greater than 400
+	position.y = clamp(position.y, -500, 400)
 
 func start(pos, v) :
 	position = pos
 	show()
 	velocity = v
 
-# This is called whenever the signals from VisibilityNotifier2D are emitted
-# It is an implementation of Observer, Goose is "observing" the VisibilityNotifier2D
 func _on_VisibilityNotifier2D_screen_exited():
+	#print("deleting goose")
+	#emit_signal("bye")
 	mediator.bye()
 	queue_free()
 	
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):
+	#print("viewport left")
+	#emit_signal("bye")
 	mediator.bye()
 	queue_free()
 	
+
 func _on_shot_fired(event) :
+	#print("Goose says shot fired!")
+	
 	if ( (event.position.x < (position.x + 50)) && (event.position.x > (position.x - 50)) && (event.position.y < (position.y + 59)) && (event.position.y > (position.y - 59)) ) :
+		#print("Goose was hit, says Goose!")
 		hide()
-		mediator.hit(event.position, value)
+		#emit_signal("hit", event.position)
+		#emit_signal("bye")
+		mediator.hit(event.position)
 		mediator.bye()
 		queue_free()
+	#else :
+		#print("Goose says miss!")

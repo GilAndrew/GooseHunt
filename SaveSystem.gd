@@ -4,10 +4,11 @@ extends Node
 var save_path = "res://save.txt"
 var file = File.new()
 	
-func saveScore():
-	var newScore = [69, 0, 0, 0, 0, 0, 0 , 0, 0, 12]
-	file.open(save_path, File.WRITE)
-	file.store_var(newScore)
+func loadScores():
+	file.open(save_path, File.READ)
+	var data = file.get_var()
+	$"/root/Global".highscore = data[9]
+	#$"/root/Global".allscores = data
 	file.close()
 	
 func compareScore(newscore):
@@ -16,9 +17,9 @@ func compareScore(newscore):
 	var i = 0
 	while i < 10:
 		if data[i] < newscore:
-			data[9] = newscore
+			data[0] = newscore
 			data.sort()
-			print(data[9])
+			#print(data[9])
 			replaceScores(data)
 			break
 		i += 1

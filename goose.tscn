@@ -7,7 +7,8 @@
 extents = Vector2( 59, 50 )
 
 [node name="Goose" type="Area2D"]
-z_index = -2
+z_index = -1
+z_as_relative = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
