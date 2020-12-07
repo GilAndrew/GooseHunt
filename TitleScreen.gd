@@ -1,6 +1,10 @@
 extends Node
 
 func _ready():
+	SaveSystem.saveScore()
+	SaveSystem.compareScore(201)
+	$"/root/Global".highscore = SaveSystem.highestScore()
+	
 	for button in $Menu/CenterRow/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_Pressed", [button.scene_to_load])
 	

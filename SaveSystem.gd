@@ -1,20 +1,47 @@
 extends Node
 #This is a singleton
-#https://www.youtube.com/watch?v=ygGaN1EOQEA&feature=emb_logo
-var highscore = 0
-
-var save_path = "res://saveFile.cfg"
-var config = ConfigFile.new()
-var load_response = config.load(save_path)
-
-
-func _ready():
-	pass # Replace with function body.
 	
-func saveScore(section, key):
-	config.set_value(section, key, highscore)
-	config.save(save_path)
+var save_path = "res://save.txt"
+var file = File.new()
 	
-func loadScore(section, key):
-	highscore = config.get_value(section, key, highscore)
+func saveScore():
+	var newScore = [69, 0, 0, 0, 0, 0, 0 , 0, 0, 12]
+	file.open(save_path, File.WRITE)
+	file.store_var(newScore)
+	file.close()
+	
+func compareScore(newscore):
+	file.open(save_path, File.READ)
+	var data = file.get_var()
+	var i = 0
+	while i < 10:
+		if data[i] < newscore:
+			data[9] = newscore
+			data.sort()
+			print(data[9])
+			replaceScores(data)
+			break
+		i += 1
+	file.close()
+	
+func replaceScores(newScores):
+	file.open(save_path, File.WRITE)
+	file.store_var(newScores)
+	print(newScores[0])
+	file.close()
+	
+func returnScores():
+	file.open(save_path, File.READ)
+	var data = file.get_var()
+	file.close()
+	return data
+	
+func highestScore():
+	file.open(save_path, File.READ)
+	var data = file.get_var()
+	file.close()
+	#print(data[0])
+	return data[9]
+	
+	
 	
