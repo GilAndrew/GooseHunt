@@ -11,7 +11,7 @@ var geese_to_spawn = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mediator.connect("hit", self, "_on_goose_hit")
+	#mediator.connect("hit", self, "_on_goose_hit")
 	mediator.connect("bye", self, "_on_goose_bye")
 	new_game()
 
