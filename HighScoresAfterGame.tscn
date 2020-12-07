@@ -34,7 +34,7 @@ margin_bottom = 308.4
 text = "0"
 script = ExtResource( 3 )
 
-[node name="fuckgoback" parent="." instance=ExtResource( 4 )]
+[node name="returnButton" parent="." instance=ExtResource( 4 )]
 margin_left = 19.5275
 margin_top = 136.436
 margin_right = 379.527

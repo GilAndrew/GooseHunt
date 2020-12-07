@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	$fuckgoback.connect("pressed", self, "_on_Button_Pressed", [$fuckgoback.scene_to_load])
+	$returnButton.connect("pressed", self, "_on_Button_Pressed", [$returnButton.scene_to_load])
 	
 	
 func _on_Button_Pressed(scene_to_load):
