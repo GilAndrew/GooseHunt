@@ -3,7 +3,7 @@ extends Node
 # This gives us access to the instance of the Mediator Singleton and the Global singleton
 onready var mediator = get_node("/root/Mediator")
 onready var global = get_node("/root/Global")
-export (PackedScene) var goose = load("res://goose.tscn")
+var goose = preload("res://goose.tscn")
 
 var goose_counter = 2
 var bullets = 3
@@ -18,7 +18,7 @@ func new_game():
 	$GooseTimer.start()
 
 func game_over():
-	SaveSystem.compareScore(global.score)
+	$"/root/SaveSystem".compareScore(global.score)
 	var _e = get_tree().change_scene("res://Screens/ScoreScreen.tscn")
 	$GooseTimer.stop()
 

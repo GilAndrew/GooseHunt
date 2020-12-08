@@ -19,12 +19,18 @@ func newGoose(g, type):
 			g.min_speed = 400
 			g.max_speed = 450
 			g.value = 4
-			var velocity = Vector2(rand_range(g.min_speed, g.max_speed), 0)
+			var x_speed = rand_range(g.min_speed, g.max_speed)
+			if g.dir == 1 :
+				x_speed *= -1
+			var velocity = Vector2(x_speed, rand_range(g.min_speed, g.max_speed))
 			g.start(g.position, velocity)
 		"hard":
 			g.speed = 500
 			g.min_speed = 500
 			g.max_speed = 550
 			g.value = 6
-			var velocity = Vector2(rand_range(g.min_speed, g.max_speed), 0)
+			var x_speed = rand_range(g.min_speed, g.max_speed)
+			if g.dir == 1 :
+				x_speed *= -1
+			var velocity = Vector2(x_speed, rand_range(g.min_speed, g.max_speed))
 			g.start(g.position, velocity)
