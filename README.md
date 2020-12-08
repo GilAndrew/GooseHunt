@@ -7,7 +7,7 @@
 
 -Special Instructions to Run Program:
 (Note currently it only works on Windows)
-1. Download the files "Goose Hunt.pck" and "Goose Hunt.exe"
+1. Download the folder /Executables/Windows/ which has the files "Goose Hunt.pck" and "Goose Hunt.exe"
 2. Have both files in the same folder and run the executable "Goose Hunt.exe" file
 
 -Note:
