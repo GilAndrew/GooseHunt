@@ -13,3 +13,7 @@
 -Note:
 The game itself can run from the exported game files, and all .gd scripts can be opened and easily read in a text-editor.
 However, .tscn files (amongst other Godot specific file types), can, but are not easily read by text-editors. The best way to read them is by viewing them through the Godot game engine (which is freely available for download).
+
+Project Video Link
+https://drive.google.com/file/d/1NNO2BqMPutf9xfs8brSn6d0oa9XLN-LP/view?usp=sharing
+
