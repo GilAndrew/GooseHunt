@@ -11,6 +11,7 @@ var geese_to_spawn = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#mediator.connect("hit", self, "_on_goose_hit")
 	mediator.connect("bye", self, "_on_goose_bye")
 	new_game()
 
@@ -18,9 +19,11 @@ func new_game():
 	$GooseTimer.start()
 
 func game_over():
-	SaveSystem.compareScore(global.score)
-	var _e = get_tree().change_scene("res://Screens/ScoreScreen.tscn")
+	print("Game over!")
+	print("Go to the post-game screen (display the high scores, then time out to title screen)")
 	$GooseTimer.stop()
+	SaveSystem.compareScore(global.score)
+	get_tree().change_scene("res://HighScoresAfterGame.tscn")
 
 func _input(event):
 	if event is InputEventMouseButton :
@@ -28,6 +31,12 @@ func _input(event):
 			pass
 		elif (event.button_index == BUTTON_LEFT and event.pressed and bullets > 0):
 			bullets -= 1
+			if bullets == 2:
+				$Bullets/b3.visible = false
+			elif bullets == 1:
+				$Bullets/b2.visible = false
+			else:
+				$Bullets/b1.visible = false
 			$Reticle.position = event.position
 			$Reticle.show()
 			$ReticleTimer.start()
@@ -41,6 +50,7 @@ func _on_ReticleTimer_timeout():
 func _on_GooseTimer_timeout():
 	# on timeout, spawn a goose!
 	if (global.num_rounds == 0) :
+		print("we made it here")
 		game_over()
 	
 	elif geese_to_spawn == 0 :
@@ -51,6 +61,9 @@ func _on_GooseTimer_timeout():
 		$GooseTimer.start()
 	else :
 		bullets = 3
+		$Bullets/b1.visible = true
+		$Bullets/b2.visible = true
+		$Bullets/b3.visible = true
 		goose_counter = 2
 		geese_to_spawn -=2
 		

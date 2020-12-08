@@ -6,7 +6,7 @@ extends Node
 # The above tutorial was used as a reference
 
 var score = 0
-var highscore
+var highscore = 0
 var num_rounds = 1
 var difficulty = "easy"
 

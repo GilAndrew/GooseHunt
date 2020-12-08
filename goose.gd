@@ -5,21 +5,22 @@ class_name Goose
 # This gives us access to the instance of the Mediator Singleton and the Global singleton
 onready var mediator = get_node("/root/Mediator")
 onready var global = get_node("/root/Global")
-var gooseBehavior = preload("res://goose_behavior.gd").new()
+var gooseBehavior = load("res://goose_behavior.gd").new()
 
+var screen_size
 var type
 var dir # if 0, going right, if 1 going left 
 var speed
 var min_speed
 var max_speed
 var value
-var velocity
+var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mediator.connect("shot", self, "_on_shot_fired")
-	add_child(gooseBehavior)
 	type = global.difficulty
+	screen_size = get_viewport_rect().size
 	position.x = rand_range(400,500)
 	position.y = 500
 	gooseBehavior.newGoose(self, type)
@@ -37,11 +38,11 @@ func _process(delta):
 	
 	# now we change the velocity values to get some more "fun" movement
 	if (dir == 0) :
-		velocity.x += rand_range(-20,30)
+		velocity.x += rand_range(-10,10)
 	else :
-		velocity.x += rand_range(-45,5)
+		velocity.x += rand_range(-15,5)
 	
-	velocity.y += (rand_range(-50,5)*2)
+	velocity.y += rand_range(-30,10)
 	
 	# we set a bound at 500, so the geese don't spawn below dirt
 	position.y = clamp(position.y, -500, 500)

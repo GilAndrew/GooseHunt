@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Assets/Font.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://MenuStuff/buttons/ReturnButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Screens/ScoresLabel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Screens/NumericalScores.gd" type="Script" id=4]
-[ext_resource path="res://Screens/ScoreScreen.gd" type="Script" id=5]
+[ext_resource path="res://ScoresLabel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NumericalScores.gd" type="Script" id=4]
+[ext_resource path="res://ScoreScreen.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -39,4 +39,4 @@ margin_left = 19.5275
 margin_top = 136.436
 margin_right = 379.527
 margin_bottom = 258.436
-scene_to_load = "res://Screens/TitleScreen.tscn"
+scene_to_load = "res://TitleScreen.tscn"

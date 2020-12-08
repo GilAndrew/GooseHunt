@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Font.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://MenuStuff/buttons/ReturnButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Screens/ScoresLabel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Screens/NumericalScores.gd" type="Script" id=4]
-[ext_resource path="res://Screens/ScoreScreen.gd" type="Script" id=5]
+[ext_resource path="res://ScoresLabel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://displayScores.gd" type="Script" id=3]
+[ext_resource path="res://MenuStuff/buttons/BacktoMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ScoreScreenScript.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
 font_data = ExtResource( 1 )
 
-[node name="ScoreScreen" type="Node2D"]
+[node name="scores" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="HighScores" type="Label" parent="."]
@@ -26,17 +26,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NumericalScores" parent="." instance=ExtResource( 3 )]
+[node name="NumericalScores" parent="." instance=ExtResource( 2 )]
 margin_left = 429.473
 margin_top = 87.4002
 margin_right = 478.473
 margin_bottom = 308.4
 text = "0"
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
-[node name="returnButton" parent="." instance=ExtResource( 2 )]
+[node name="returnButton" parent="." instance=ExtResource( 4 )]
 margin_left = 19.5275
 margin_top = 136.436
 margin_right = 379.527
 margin_bottom = 258.436
-scene_to_load = "res://Screens/TitleScreen.tscn"
+scene_to_load = "res://TitleScreen.tscn"

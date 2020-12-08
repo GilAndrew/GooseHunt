@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Screens/Main.gd" type="Script" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Untitled.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Dirt.PNG" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/skyandtree.PNG" type="Texture" id=4]
 [ext_resource path="res://MenuStuff/currentscore.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Capture.PNG" type="Texture" id=6]
+[ext_resource path="res://Assets/224681.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Font.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 38
+font_data = ExtResource( 8 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -61,5 +67,40 @@ position = Vector2( 109.249, 673.714 )
 scale = Vector2( 0.588343, 0.805116 )
 z_index = -1
 texture = ExtResource( 6 )
+
+[node name="Remaining" type="Label" parent="."]
+margin_left = 54.4746
+margin_top = 625.498
+margin_right = 165.475
+margin_bottom = 666.498
+custom_fonts/font = SubResource( 1 )
+text = "Bullets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bullets" type="HBoxContainer" parent="."]
+margin_left = 24.2045
+margin_top = 667.75
+margin_right = 195.204
+margin_bottom = 721.75
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b1" type="Sprite" parent="Bullets"]
+position = Vector2( 26.0288, 27.0605 )
+scale = Vector2( 0.086798, 0.086798 )
+texture = ExtResource( 7 )
+
+[node name="b2" type="Sprite" parent="Bullets"]
+position = Vector2( 85.4963, 22.2964 )
+scale = Vector2( 0.086798, 0.086798 )
+texture = ExtResource( 7 )
+
+[node name="b3" type="Sprite" parent="Bullets"]
+position = Vector2( 140.971, 25.5469 )
+scale = Vector2( 0.086798, 0.086798 )
+texture = ExtResource( 7 )
 [connection signal="timeout" from="ReticleTimer" to="." method="_on_ReticleTimer_timeout"]
 [connection signal="timeout" from="GooseTimer" to="." method="_on_GooseTimer_timeout"]
