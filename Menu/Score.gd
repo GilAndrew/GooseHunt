@@ -1,4 +1,4 @@
 extends Label
 
 func _process(_delta):
-	text = String(Global.score)
+	text = String($"/root/Global".score)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://CheckBox.gd" type="Script" id=1]
+[ext_resource path="res://Menu/buttons/CheckBox.gd" type="Script" id=1]
 
 [node name="CheckBox" type="CheckBox"]
 anchor_right = 0.013

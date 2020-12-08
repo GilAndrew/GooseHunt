@@ -1,10 +1,9 @@
 extends Node
 
 func _ready():
-	#SaveSystem.saveScore()
-	#SaveSystem.compareScore($"/root/Global".highscore)
 	$"/root/Global".reset()
 	$"/root/Global".highscore = $"/root/SaveSystem".highestScore()
+	$"Label/highscore/Score".text = str($"/root/Global".highscore)
 	
 	for button in $Menu/CenterRow/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_Pressed", [button.scene_to_load])

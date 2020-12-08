@@ -18,28 +18,10 @@ _global_script_classes=[ {
 "class": "GooseBehavior",
 "language": "GDScript",
 "path": "res://goose_behavior.gd"
-}, {
-"base": "Area2D",
-"class": "easyGoose",
-"language": "GDScript",
-"path": "res://easy_goose.gd"
-}, {
-"base": "Area2D",
-"class": "hardGoose",
-"language": "GDScript",
-"path": "res://hard_goose.gd"
-}, {
-"base": "Area2D",
-"class": "intermediateGoose",
-"language": "GDScript",
-"path": "res://intermediate_goose.gd"
 } ]
 _global_script_class_icons={
 "Goose": "",
-"GooseBehavior": "",
-"easyGoose": "",
-"hardGoose": "",
-"intermediateGoose": ""
+"GooseBehavior": ""
 }
 
 [application]
@@ -47,6 +29,8 @@ _global_script_class_icons={
 config/name="Goose Hunt"
 run/main_scene="res://Screens/TitleScreen.tscn"
 config/use_custom_user_dir=true
+run/low_processor_mode=true
+run/low_processor_mode_sleep_usec=0
 config/icon="res://Assets/icon.png"
 
 [autoload]
@@ -55,11 +39,19 @@ SaveSystem="*res://SaveSystem.gd"
 Global="*res://Global.gd"
 Mediator="*res://mediator.gd"
 
+[debug]
+
+settings/fps/force_fps=30
+
 [display]
 
 window/size/width=892
 window/size/height=740
 window/dpi/allow_hidpi=true
+
+[physics]
+
+common/physics_fps=30
 
 [rendering]
 
